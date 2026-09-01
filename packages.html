@@ -10,26 +10,147 @@
     content="Browse budget shared and luxury private tour packages in Sikkim. Lachung, Lachen, Gurudongmar, Nathula Pass, Silk Route Zuluk. Book online at Sikkim Club, MG Marg Gangtok. Phone: +91 90000 12345">
   <link rel="canonical" href="https://sikkimclub.com/packages.html">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Flatpickr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <!-- Custom Theme CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
+
+  <style>
+    :root {
+      --primary-color: #2b7a2d;
+      --primary-dark: #1b521d;
+      --primary-light: #3da840;
+      --primary-ultra-light: #eaf6ea;
+      --secondary-color: #f59e0b;
+      --secondary-dark: #d97706;
+      --accent-color: #0284c7;
+      --dark-bg: #0f172a;
+      --dark-surface: #1e293b;
+      --text-main: #1f2937;
+      --text-muted: #64748b;
+      --bg-light: #f8fafc;
+      --border-color: #e2e8f0;
+      --white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 35px -5px rgba(0,0,0,0.15), 0 10px 15px -5px rgba(0,0,0,0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; font-weight: 700; color: #0f172a; }
+
+    .top-marquee-bar { background: linear-gradient(90deg, #1b521d 0%, #2b7a2d 50%, #1e3a8a 100%); color: #fff; font-size: 0.875rem; padding: 9px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: inline-block; animation: marqueeScroll 30s linear infinite; }
+    @keyframes marqueeScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+    .main-header { position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+    .nav-link { font-weight: 600; font-size: 0.95rem; color: #334155 !important; padding: 0.5rem 0.9rem !important; border-radius: 8px; transition: var(--transition); }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color) !important; background-color: var(--primary-ultra-light); }
+
+    /* Highlighted Register Button */
+    .btn-register-highlight {
+      background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #dc2626 100%);
+      color: #ffffff !important;
+      border: none;
+      font-weight: 800;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.45);
+      animation: registerPulse 2.2s infinite ease-in-out;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-register-highlight:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.7);
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%);
+    }
+
+    .btn-register-highlight::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(30deg);
+      animation: registerShine 3s infinite linear;
+    }
+
+    @keyframes registerPulse {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); transform: scale(1); }
+      50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); transform: scale(1.04); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); transform: scale(1); }
+    }
+
+    @keyframes registerShine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    .package-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid #e2e8f0; transition: var(--transition); display: flex; flex-direction: column; height: 100%; }
+    .package-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: #cbd5e1; }
+    .package-image-wrap { position: relative; height: 220px; overflow: hidden; }
+    .package-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .package-card:hover .package-image-wrap img { transform: scale(1.08); }
+    .package-badge { position: absolute; top: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 5px 12px; border-radius: 9999px; }
+    .package-discount-badge { position: absolute; top: 14px; right: 14px; background: #ef4444; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 9999px; }
+    .package-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .package-title { font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.35; }
+    .package-meta { display: flex; align-items: center; gap: 14px; font-size: 0.85rem; color: #64748b; margin-bottom: 14px; }
+    .package-features { list-style: none; padding: 0; margin: 0 0 18px 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.875rem; color: #475569; }
+    .package-features li { display: flex; align-items: center; gap: 8px; }
+    .package-features li i { color: var(--primary-color); font-size: 0.95rem; }
+    .package-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; }
+    .price-tag-current { font-size: 1.35rem; font-weight: 800; color: var(--primary-color); }
+    .price-tag-original { font-size: 0.9rem; color: #94a3b8; text-decoration: line-through; margin-left: 6px; }
+
+    .main-footer { background: #0b1322; color: #94a3b8; padding: 70px 0 24px 0; font-size: 0.925rem; }
+    .footer-heading { color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 36px; height: 3px; background: var(--primary-color); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #94a3b8; text-decoration: none; transition: var(--transition); }
+    .footer-links a:hover { color: #ffffff; transform: translateX(4px); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; color: #cbd5e1; }
+    .footer-contact-item i { color: var(--secondary-color); font-size: 1.2rem; margin-top: 3px; }
+
+    .floating-actions { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+    .floating-btn { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: var(--transition); }
+    .floating-whatsapp { background: #25d366; }
+    .floating-call { background: var(--primary-color); }
+    .floating-btn:hover { transform: scale(1.12); color: #fff; }
+
+    .custom-modal-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%); color: #fff; border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 20px 24px; }
+  </style>
 </head>
 
 <body>
 
-  <!-- Top Announcement Marquee -->
   <div class="top-marquee-bar">
     <div class="marquee-content">
       <span>🏔️ <strong>Book Now!</strong> 2 Night Lachung & Yumthang Valley Shared Tour @ ₹3,809/- Per Person</span>
@@ -38,11 +159,12 @@
       <span class="mx-4">•</span>
       <span>📄 <strong>Instant Permit Assistance!</strong> Guaranteed Protected Area Permits (PAP) processed for North Sikkim</span>
       <span class="mx-4">•</span>
+      <span>🔥 <strong>Partner Portal:</strong> <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="badge bg-warning text-dark px-2 py-1 text-decoration-none">Register Now ➔</a></span>
+      <span class="mx-4">•</span>
       <span>📞 <strong>Call Sikkim Club Desk:</strong> +91 90000 12345 (MG Marg, Gangtok)</span>
     </div>
   </div>
 
-  <!-- Header -->
   <header class="main-header">
     <nav class="navbar navbar-expand-lg navbar-light py-2">
       <div class="container-fluid px-lg-5">
@@ -82,12 +204,14 @@
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
 
-          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-            <a href="tel:+919000012345" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-2 fw-bold font13 d-flex align-items-center gap-2">
-              <i class="bi bi-telephone-fill text-success"></i> +91 90000 12345
+          <div class="d-flex align-items-center gap-2 gap-xl-3 mt-3 mt-lg-0 flex-wrap">
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"
+              class="btn btn-register-highlight rounded-pill px-3 py-2 fw-bold font13 d-flex align-items-center gap-1 shadow">
+              <i class="bi bi-person-plus-fill"></i>
+              <span>Register Now</span>
             </a>
             <a href="https://wa.me/919000012345?text=Hello%20Sikkim%20Club!%20I%20want%20to%20book%20a%20tour." target="_blank"
-              class="btn btn-success rounded-pill px-3 py-2 fw-bold font14 d-flex align-items-center gap-2 shadow-sm">
+              class="btn btn-success rounded-pill px-3 py-2 fw-bold font13 d-flex align-items-center gap-1 shadow-sm">
               <i class="bi bi-whatsapp"></i> Book Online
             </a>
           </div>
@@ -96,18 +220,19 @@
     </nav>
   </header>
 
-  <!-- Page Banner -->
   <section class="py-5 text-center text-white" style="background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;">
     <div class="container py-4">
       <span class="badge bg-success font13 px-3 py-2 rounded-pill mb-2">SIKKIM TOUR PACKAGES</span>
       <h1 class="display-5 fw-bold mb-2">Handcrafted Himalayan Holidays</h1>
-      <p class="fs-6 text-white-50 max-w-700 mx-auto mb-0">
+      <p class="fs-6 text-white-50 max-w-700 mx-auto mb-3">
         Choose from budget shared tours, fixed group departures, and luxury private customized holidays covering every corner of Sikkim.
       </p>
+      <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-register-highlight rounded-pill px-4 py-2 fw-bold shadow">
+        <i class="bi bi-person-plus-fill"></i> Register Now
+      </a>
     </div>
   </section>
 
-  <!-- Packages Filter & Grid -->
   <section class="container my-5">
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4 pb-3 border-bottom">
       <div>
@@ -123,9 +248,7 @@
       </div>
     </div>
 
-    <!-- Package Cards Grid -->
     <div class="row g-4">
-      <!-- 1. 3D2N Lachung -->
       <div class="col-12 col-md-6 col-lg-4 package-grid-item" data-category="north">
         <div class="package-card">
           <div class="package-image-wrap">
@@ -160,7 +283,6 @@
         </div>
       </div>
 
-      <!-- 2. 4D3N North Sikkim -->
       <div class="col-12 col-md-6 col-lg-4 package-grid-item" data-category="north">
         <div class="package-card">
           <div class="package-image-wrap">
@@ -195,7 +317,6 @@
         </div>
       </div>
 
-      <!-- 3. 1D Nathula Pass -->
       <div class="col-12 col-md-6 col-lg-4 package-grid-item" data-category="nathula">
         <div class="package-card">
           <div class="package-image-wrap">
@@ -229,162 +350,9 @@
           </div>
         </div>
       </div>
-
-      <!-- 4. 5D4N Grand Sikkim Combo -->
-      <div class="col-12 col-md-6 col-lg-4 package-grid-item" data-category="north">
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" alt="Sikkim Combo Tour">
-            <span class="package-badge"><i class="bi bi-clock-fill me-1"></i> 5 Days / 4 Nights</span>
-            <span class="package-discount-badge">Grand Tour</span>
-          </div>
-          <div class="package-content">
-            <h3 class="package-title">
-              <a href="javascript:void(0)" onclick="openItineraryModal('5d4n-combo')">5 Days 4 Night Combine Nathula Pass & North Sikkim</a>
-            </h3>
-            <div class="package-meta">
-              <span><i class="bi bi-geo-alt-fill text-success"></i> Complete Circuit</span>
-              <span><i class="bi bi-people-fill text-primary"></i> Family & Group</span>
-            </div>
-            <ul class="package-features">
-              <li><i class="bi bi-check2-circle"></i> Nathula + Gurudongmar + Yumthang Valley</li>
-              <li><i class="bi bi-check2-circle"></i> 4 Nights Hotel Stays (Gangtok + Lachen + Lachung)</li>
-              <li><i class="bi bi-check2-circle"></i> Complete Transport, Meals & Permits</li>
-            </ul>
-            <div class="package-footer">
-              <div>
-                <span class="price-tag-current">₹7,141</span>
-                <span class="price-tag-original">₹8,926</span>
-                <small class="d-block text-muted font11">per person (all incl.)</small>
-              </div>
-              <button type="button" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-bold" onclick="openItineraryModal('5d4n-combo')">
-                View Details <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. 3D2N Zuluk Silk Route -->
-      <div class="col-12 col-md-6 col-lg-4 package-grid-item" data-category="silkroute">
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop" alt="Zuluk Silk Route">
-            <span class="package-badge"><i class="bi bi-clock-fill me-1"></i> 3 Days / 2 Nights</span>
-            <span class="package-discount-badge">Scenic Drive</span>
-          </div>
-          <div class="package-content">
-            <h3 class="package-title">
-              <a href="javascript:void(0)" onclick="openItineraryModal('3d2n-zuluk')">3 Days 2 Night Zuluk & Old Silk Route Circuit</a>
-            </h3>
-            <div class="package-meta">
-              <span><i class="bi bi-geo-alt-fill text-success"></i> East Sikkim</span>
-              <span><i class="bi bi-shield-lock-fill text-primary"></i> Silk Route PAP</span>
-            </div>
-            <ul class="package-features">
-              <li><i class="bi bi-check2-circle"></i> Iconic 32 Hairpin Curves & Thambi Sunrise</li>
-              <li><i class="bi bi-check2-circle"></i> Kupup Elephant Lake & Gnathang Valley</li>
-              <li><i class="bi bi-check2-circle"></i> Authentic Himalayan Village Homestays</li>
-            </ul>
-            <div class="package-footer">
-              <div>
-                <span class="price-tag-current">₹4,499</span>
-                <span class="price-tag-original">₹5,499</span>
-                <small class="d-block text-muted font11">per person</small>
-              </div>
-              <button type="button" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-bold" onclick="openItineraryModal('3d2n-zuluk')">
-                View Details <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. 1D Gangtok Local Sightseeing -->
-      <div class="col-12 col-md-6 col-lg-4 package-grid-item" data-category="gangtok">
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=600&auto=format&fit=crop" alt="Gangtok Sightseeing">
-            <span class="package-badge"><i class="bi bi-clock-fill me-1"></i> 1 Day</span>
-            <span class="package-discount-badge">Popular</span>
-          </div>
-          <div class="package-content">
-            <h3 class="package-title">
-              <a href="javascript:void(0)" onclick="openItineraryModal('1d-gangtok-local')">1 Day Gangtok Best 7-Points City Sightseeing</a>
-            </h3>
-            <div class="package-meta">
-              <span><i class="bi bi-geo-alt-fill text-success"></i> Capital City</span>
-              <span><i class="bi bi-car-front-fill text-primary"></i> Private Cab</span>
-            </div>
-            <ul class="package-features">
-              <li><i class="bi bi-check2-circle"></i> Tashi View Point & Kanchenjunga View</li>
-              <li><i class="bi bi-check2-circle"></i> Bakthang Falls, Enchey Monastery, Ganesh Tok</li>
-              <li><i class="bi bi-check2-circle"></i> Dedicated Cab with MG Marg Pickup</li>
-            </ul>
-            <div class="package-footer">
-              <div>
-                <span class="price-tag-current">₹999</span>
-                <span class="price-tag-original">₹1,499</span>
-                <small class="d-block text-muted font11">per person</small>
-              </div>
-              <button type="button" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-bold" onclick="openItineraryModal('1d-gangtok-local')">
-                View Details <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Shared vs Private Comparison Table -->
-  <section class="container my-5 py-3">
-    <div class="p-4 p-md-5 bg-white border rounded-4 shadow-sm">
-      <h3 class="fw-bold text-center mb-2">Shared Group Tours vs Private Custom Tours</h3>
-      <p class="text-muted text-center max-w-700 mx-auto mb-4 font14">How Sikkim Club delivers the ultimate mountain experience tailored to your preference and budget.</p>
-
-      <div class="table-responsive">
-        <table class="table table-bordered align-middle">
-          <thead class="table-light">
-            <tr>
-              <th scope="col" class="py-3">Feature</th>
-              <th scope="col" class="py-3 text-success"><i class="bi bi-people-fill"></i> Budget Shared Tours</th>
-              <th scope="col" class="py-3 text-primary"><i class="bi bi-car-front-fill"></i> Luxury Private Tours</th>
-            </tr>
-          </thead>
-          <tbody class="font14">
-            <tr>
-              <td class="fw-bold">Target Audience</td>
-              <td>Solo travelers, backpackers, couples, small budget groups</td>
-              <td>Families with elders/kids, honeymooners, corporate groups</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Per Person Cost</td>
-              <td class="text-success fw-bold">Ultra Budget (₹1,142 - ₹3,809 / person)</td>
-              <td class="text-primary fw-bold">Exclusive SUV (₹16,000 - ₹28,000 / full vehicle)</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Vehicle Sharing</td>
-              <td>Seat in Bolero / Maxx / Xylo (Max 8-10 passengers)</td>
-              <td>100% Dedicated Innova Crysta / Xylo (Exclusive to your group)</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Flexibility & Stops</td>
-              <td>Fixed departure timings and standard photo stops</td>
-              <td>Flexible timings, customizable photo stops & route adjustments</td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Permit Handling</td>
-              <td>Included (Sikkim Club processes group permit)</td>
-              <td>Included (Priority single-window VIP PAP pass)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="main-footer">
     <div class="container">
       <div class="row g-4 pb-5 border-bottom border-secondary border-opacity-25">
@@ -429,10 +397,6 @@
             <i class="bi bi-telephone-fill"></i>
             <a href="tel:+919000012345">+91 90000 12345</a>
           </div>
-          <div class="footer-contact-item">
-            <i class="bi bi-envelope-fill"></i>
-            <a href="mailto:example.sikkim@example.com">example.sikkim@example.com</a>
-          </div>
         </div>
       </div>
       <div class="d-flex justify-content-between align-items-center flex-wrap pt-4 font13 text-muted">
@@ -442,7 +406,6 @@
     </div>
   </footer>
 
-  <!-- Floating Quick Actions -->
   <div class="floating-actions">
     <a href="https://wa.me/919000012345?text=Hello%20Sikkim%20Club!%20I%20want%20to%20book%20a%20tour." target="_blank" class="floating-btn floating-whatsapp" title="WhatsApp Us">
       <i class="bi bi-whatsapp"></i>
@@ -452,7 +415,6 @@
     </a>
   </div>
 
-  <!-- Interactive Package Itinerary Modal -->
   <div class="modal fade" id="itineraryModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content rounded-4 border-0 shadow-xl overflow-hidden">
@@ -504,10 +466,112 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterBtns = document.querySelectorAll('.pkg-filter-btn');
+      const packageCards = document.querySelectorAll('.package-grid-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(b => b.classList.remove('active', 'btn-success', 'text-white'));
+          filterBtns.forEach(b => b.classList.add('btn-outline-secondary'));
+
+          this.classList.add('active', 'btn-success', 'text-white');
+          this.classList.remove('btn-outline-secondary');
+
+          const filter = this.getAttribute('data-filter');
+          packageCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+
+    const SIKKIM_PHONE = '+919000012345';
+    const SIKKIM_LOCATION = 'MG Marg, Gangtok, Sikkim – 737101';
+
+    const packageItineraries = {
+      '3d2n-lachung': {
+        title: '3 Days 2 Nights Lachung & Yumthang Valley Shared Tour',
+        price: '₹3,809 / Person (Govt Permit & Hotel Stay Included)',
+        duration: '3 Days / 2 Nights',
+        pickup: 'Gangtok Hotel / Vajra Stand (10:00 AM)',
+        itinerary: [
+          { day: 'Day 1: Gangtok to Lachung (125 km / 6-7 hrs)', desc: 'Pick up from Gangtok at 10:00 AM. Scenic waterfalls on the way. Night stay in Lachung hotel with dinner.' },
+          { day: 'Day 2: Lachung - Yumthang Valley & Zero Point - Lachung', desc: 'Visit Yumthang Valley of Flowers and hot springs. Optional Zero Point trip. Return to Lachung for hot lunch.' },
+          { day: 'Day 3: Lachung to Gangtok via Chungthang', desc: 'Depart for Gangtok after breakfast. Arrive in Gangtok by evening.' }
+        ],
+        inclusions: ['Sharing Vehicle', '2 Nights Hotel in Lachung', 'All Meals', 'Sikkim Permit'],
+        exclusions: ['Zero Point extra cost', 'Personal tips']
+      },
+      '4d3n-north-sikkim': {
+        title: '4 Days 3 Nights Complete North Sikkim (Lachen, Gurudongmar & Lachung)',
+        price: '₹5,238 / Person',
+        duration: '4 Days / 3 Nights',
+        pickup: 'Gangtok (10:00 AM)',
+        itinerary: [
+          { day: 'Day 1: Gangtok to Lachen', desc: 'Scenic drive to Lachen via Seven Sisters Waterfall. Night stay in Lachen.' },
+          { day: 'Day 2: Gurudongmar Lake (17,800 ft) & Transfer to Lachung', desc: 'Early morning 4 AM start to sacred Gurudongmar Lake. Transfer to Lachung in afternoon.' },
+          { day: 'Day 3: Yumthang Valley & Zero Point', desc: 'Full day exploring Yumthang Valley of flowers and sulfur hot springs.' },
+          { day: 'Day 4: Lachung to Gangtok', desc: 'Return drive to Gangtok with photo stops.' }
+        ],
+        inclusions: ['Shared SUV', '3 Nights Hotel + Meals', 'Gurudongmar Permits'],
+        exclusions: ['Personal laundry', 'Heaters']
+      },
+      '1d-nathula': {
+        title: '1 Day Sharing Nathula Pass, Tsomgo Lake & Baba Mandir',
+        price: '₹1,142 / Person',
+        duration: '1 Day',
+        pickup: 'Gangtok',
+        itinerary: [
+          { day: 'Full Day Tour (07:30 AM to 05:00 PM)', desc: 'Visit Indo-China border at Nathu La Pass, sacred Tsomgo (Changu) Lake, and Baba Harbhajan Singh Mandir.' }
+        ],
+        inclusions: ['Shared SUV Seat', 'Nathula Pass PAP Permit', 'Entry Tickets'],
+        exclusions: ['Yak rides', 'Cable car tickets']
+      }
+    };
+
+    function openItineraryModal(pkgKey) {
+      const data = packageItineraries[pkgKey];
+      if (!data) return;
+
+      document.getElementById('itinerary-modal-title').innerText = data.title;
+      document.getElementById('itinerary-modal-price').innerText = data.price;
+      document.getElementById('itinerary-modal-duration').innerText = data.duration;
+      document.getElementById('itinerary-modal-pickup').innerText = data.pickup;
+
+      const itinList = document.getElementById('itinerary-days-container');
+      itinList.innerHTML = data.itinerary.map(item => `
+        <div class="border-start border-3 border-success ps-3 mb-3">
+          <h6 class="fw-bold text-dark mb-1">${item.day}</h6>
+          <p class="text-muted font14 mb-0">${item.desc}</p>
+        </div>
+      `).join('');
+
+      const incList = document.getElementById('itinerary-inclusions-list');
+      incList.innerHTML = data.inclusions.map(inc => `<li><i class="bi bi-check2-circle text-success me-2"></i>${inc}</li>`).join('');
+
+      const excList = document.getElementById('itinerary-exclusions-list');
+      excList.innerHTML = data.exclusions.map(exc => `<li><i class="bi bi-x-circle text-danger me-2"></i>${exc}</li>`).join('');
+
+      const btnBookWa = document.getElementById('itinerary-modal-wa-btn');
+      if (btnBookWa) {
+        btnBookWa.onclick = function () {
+          const message = `Hello Sikkim Club! 👋\nI want to book: *${data.title}* (${data.price}). Please share availability and permit requirements.`;
+          window.open(`https://wa.me/${SIKKIM_PHONE.replace('+', '')}?text=${encodeURIComponent(message)}`, '_blank');
+        };
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById('itineraryModal'));
+      modal.show();
+    }
+  </script>
 </body>
 
 </html>

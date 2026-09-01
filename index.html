@@ -32,8 +32,865 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Flatpickr Datepicker CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <!-- Custom Theme CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
+
+  <!-- COMPLETE THEME STYLESHEET WITH ANIMATED REGISTER BUTTON -->
+  <style>
+    :root {
+      --primary-color: #2b7a2d;
+      --primary-dark: #1b521d;
+      --primary-light: #3da840;
+      --primary-ultra-light: #eaf6ea;
+      --secondary-color: #f59e0b;
+      --secondary-dark: #d97706;
+      --accent-color: #0284c7;
+      --dark-bg: #0f172a;
+      --dark-surface: #1e293b;
+      --text-main: #1f2937;
+      --text-muted: #64748b;
+      --bg-light: #f8fafc;
+      --border-color: #e2e8f0;
+      --white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 35px -5px rgba(0,0,0,0.15), 0 10px 15px -5px rgba(0,0,0,0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.25;
+    }
+
+    /* Top Marquee Bar */
+    .top-marquee-bar {
+      background: linear-gradient(90deg, #1b521d 0%, #2b7a2d 50%, #1e3a8a 100%);
+      color: #ffffff;
+      font-size: 0.875rem;
+      padding: 9px 0;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Header & Navigation */
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: var(--transition);
+    }
+
+    .nav-link {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #334155 !important;
+      padding: 0.5rem 0.9rem !important;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color) !important;
+      background-color: var(--primary-ultra-light);
+    }
+
+    .custom-dropdown-menu {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xl);
+      padding: 0.75rem;
+      animation: dropdownFade 0.2s ease-out;
+    }
+
+    @keyframes dropdownFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       HIGHLIGHTED ANIMATED REGISTER NOW BUTTON
+       ========================================================================== */
+    .btn-register-highlight {
+      background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #dc2626 100%);
+      color: #ffffff !important;
+      border: none;
+      font-weight: 800;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.45);
+      animation: registerPulse 2.2s infinite ease-in-out;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .btn-register-highlight:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.7);
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%);
+    }
+
+    .btn-register-highlight::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(30deg);
+      animation: registerShine 3s infinite linear;
+    }
+
+    @keyframes registerPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+        transform: scale(1.04);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes registerShine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    /* Hero Section */
+    .hero-banner {
+      position: relative;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.6) 100%),
+                  url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop') center/cover no-repeat;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 70px 0 100px;
+      color: #ffffff;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Interactive Search Engine Card */
+    .search-widget-box {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      position: relative;
+      z-index: 20;
+      margin-top: -65px;
+      padding: 24px;
+    }
+
+    .search-nav-tabs {
+      display: flex;
+      gap: 8px;
+      border: none;
+      background: #f1f5f9;
+      padding: 6px;
+      border-radius: 9999px;
+      width: fit-content;
+      margin: 0 auto 24px auto;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .search-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #475569;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .search-tab-btn.active {
+      background: var(--primary-color);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(43, 122, 45, 0.35);
+    }
+
+    .search-input-group {
+      position: relative;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 10px 14px 10px 44px;
+      transition: var(--transition);
+    }
+
+    .search-input-group:focus-within, .search-input-group.active {
+      border-color: var(--primary-color);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px var(--primary-ultra-light);
+    }
+
+    .search-input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      color: var(--primary-color);
+    }
+
+    .search-input-group label {
+      display: block;
+      font-size: 0.725rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #64748b;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .search-input-group input,
+    .search-input-group select {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #0f172a;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .pax-picker-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 360px;
+      max-width: 90vw;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-color);
+      padding: 18px;
+      z-index: 100;
+      display: none;
+    }
+
+    .pax-picker-dropdown.show {
+      display: block;
+      animation: dropdownFade 0.2s ease-out;
+    }
+
+    .room-block {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .quantity-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .quantity-btn:hover {
+      background: var(--primary-ultra-light);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-search-main {
+      width: 100%;
+      min-height: 56px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(43, 122, 45, 0.4);
+    }
+
+    .btn-search-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(43, 122, 45, 0.5);
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    }
+
+    .trust-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .client-avatars {
+      display: flex;
+      align-items: center;
+    }
+
+    .client-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2.5px solid #ffffff;
+      margin-left: -10px;
+      object-fit: cover;
+    }
+
+    .client-avatar:first-child {
+      margin-left: 0;
+    }
+
+    .package-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: #cbd5e1;
+    }
+
+    .package-image-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .package-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .package-card:hover .package-image-wrap img {
+      transform: scale(1.08);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+    }
+
+    .package-discount-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 9999px;
+    }
+
+    .package-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .package-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .package-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .package-title a:hover {
+      color: var(--primary-color);
+    }
+
+    .package-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
+
+    .package-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.875rem;
+      color: #475569;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .package-features li i {
+      color: var(--primary-color);
+      font-size: 0.95rem;
+    }
+
+    .package-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price-tag-current {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+
+    .price-tag-original {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+      margin-left: 6px;
+    }
+
+    .dest-tabs-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      border: none;
+      margin-bottom: 30px;
+    }
+
+    .dest-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #475569;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dest-tab-btn:hover, .dest-tab-btn.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(43, 122, 45, 0.3);
+    }
+
+    .dest-highlight-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dest-highlight-img {
+      height: 400px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--primary-ultra-light);
+      color: var(--primary-color);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 16px;
+    }
+
+    .stat-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .permit-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: var(--radius-xl);
+      color: #ffffff;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .permit-step-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      color: #0f172a;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fleet-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #e2e8f0;
+      padding: 24px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .fleet-card:hover {
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+
+    .star-rating {
+      color: #f59e0b;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1b521d 0%, #2b7a2d 60%, #0284c7 100%);
+      border-radius: var(--radius-xl);
+      color: #ffffff;
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .main-footer {
+      background: #0b1322;
+      color: #94a3b8;
+      padding: 70px 0 24px 0;
+      font-size: 0.925rem;
+    }
+
+    .footer-heading {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-heading::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 36px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: #cbd5e1;
+    }
+
+    .footer-contact-item i {
+      color: var(--secondary-color);
+      font-size: 1.2rem;
+      margin-top: 3px;
+    }
+
+    .footer-contact-item a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-contact-item a:hover {
+      color: #ffffff;
+    }
+
+    .payment-badge {
+      background: #ffffff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #1e293b;
+      border: 1px solid #334155;
+    }
+
+    .govt-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .floating-actions {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+
+    .floating-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      transition: var(--transition);
+    }
+
+    .floating-whatsapp {
+      background: #25d366;
+    }
+
+    .floating-call {
+      background: var(--primary-color);
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.12);
+      color: #ffffff;
+    }
+
+    .custom-modal-header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 20px 24px;
+    }
+
+    @media (max-width: 991px) {
+      .hero-banner {
+        padding: 50px 0 80px;
+        min-height: 480px;
+      }
+      .search-widget-box {
+        margin-top: -40px;
+        padding: 18px;
+      }
+      .dest-highlight-img {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .search-nav-tabs {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .search-tab-btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+      .pax-picker-dropdown {
+        width: 100%;
+      }
+      .stat-number {
+        font-size: 1.85rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -46,6 +903,8 @@
       <span>⭐ <strong>Nathula Pass Special!</strong> 1 Day Sharing (Nathula + Tsomgo Lake + Baba Mandir) @ ₹1,142/- Per Person</span>
       <span class="mx-4">•</span>
       <span>📄 <strong>Instant Permit Assistance!</strong> Guaranteed Protected Area Permits (PAP) processed for North Sikkim</span>
+      <span class="mx-4">•</span>
+      <span>🔥 <strong>Partner Portal:</strong> <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="badge bg-warning text-dark px-2 py-1 text-decoration-none">Register Now ➔</a></span>
       <span class="mx-4">•</span>
       <span>📞 <strong>Call Sikkim Club Desk:</strong> +91 90000 12345 (MG Marg, Gangtok)</span>
     </div>
@@ -111,8 +970,8 @@
             </li>
           </ul>
 
-          <!-- Header Right Utilities -->
-          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+          <!-- Header Right Utilities with ANIMATED REGISTER NOW BUTTON -->
+          <div class="d-flex align-items-center gap-2 gap-xl-3 mt-3 mt-lg-0 flex-wrap">
             <!-- 24x7 Support Dropdown -->
             <div class="dropdown">
               <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-2 dropdown-toggle fw-bold font13 d-flex align-items-center gap-2"
@@ -134,9 +993,16 @@
               </ul>
             </div>
 
+            <!-- ANIMATED & HIGHLIGHTED REGISTER NOW BUTTON -->
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"
+              class="btn btn-register-highlight rounded-pill px-3 py-2 fw-bold font13 d-flex align-items-center gap-1 shadow">
+              <i class="bi bi-person-plus-fill"></i>
+              <span>Register Now</span>
+            </a>
+
             <!-- Book / WhatsApp CTA -->
             <a href="https://wa.me/919000012345?text=Hello%20Sikkim%20Club!%20I%20want%20to%20book%20a%20tour." target="_blank"
-              class="btn btn-success rounded-pill px-3 py-2 fw-bold font14 d-flex align-items-center gap-2 shadow-sm">
+              class="btn btn-success rounded-pill px-3 py-2 fw-bold font13 d-flex align-items-center gap-1 shadow-sm">
               <i class="bi bi-whatsapp"></i>
               <span>Book Online</span>
             </a>
@@ -159,6 +1025,17 @@
         <p class="fs-5 text-white-50 max-w-700 mx-auto mb-4">
           Experience budget shared group tours, private SUVs, and seamless permit assistance with <strong>Sikkim Club</strong>.
         </p>
+
+        <!-- Hero Top CTA with Animated Register Button -->
+        <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap mt-3">
+          <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"
+            class="btn btn-register-highlight btn-lg rounded-pill px-4 py-3 fw-bold shadow-lg">
+            <i class="bi bi-fire text-warning me-1"></i> Register Now
+          </a>
+          <a href="#packages" class="btn btn-outline-light btn-lg rounded-pill px-4 py-3 fw-bold">
+            Explore Packages <i class="bi bi-arrow-down-short"></i>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -226,7 +1103,6 @@
                   </div>
 
                   <div id="rooms-list-container">
-                    <!-- Dynamic rooms rendered via JS -->
                     <div class="room-block">
                       <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="fw-bold text-success font13 text-uppercase">Room 1</span>
@@ -487,7 +1363,7 @@
                 <span><i class="bi bi-people-fill text-primary"></i> Shared / Private</span>
               </div>
               <ul class="package-features">
-                <li><i class="bi bi-check2-circle"></i> Yumthang Valley & Natural Hot Springs</li>
+                <li><i class="bi bi-check2-circle"></i> Yumthang Valley of Flowers & Natural Hot Springs</li>
                 <li><i class="bi bi-check2-circle"></i> 2 Nights Hotel Stay in Lachung + Meals</li>
                 <li><i class="bi bi-check2-circle"></i> Free Sikkim Protected Area Permit</li>
               </ul>
@@ -1047,10 +1923,14 @@
             <h2 class="display-6 fw-bold text-white mb-2">Ready for your Dream Himalayan Adventure?</h2>
             <p class="text-white-50 font15 mb-0">Book your shared or private Sikkim tour with <strong>Sikkim Club</strong> today. Instant confirmation, permit approval, and 24x7 local support on MG Marg, Gangtok.</p>
           </div>
-          <div class="col-lg-4 text-lg-end">
+          <div class="col-lg-4 text-lg-end d-flex gap-2 justify-content-lg-end justify-content-center flex-wrap">
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"
+              class="btn btn-register-highlight btn-lg rounded-pill px-4 py-3 fw-bold shadow">
+              <i class="bi bi-person-plus-fill me-1"></i> Register Now
+            </a>
             <a href="https://wa.me/919000012345?text=Hello%20Sikkim%20Club!%20I%20want%20to%20plan%20my%20Sikkim%20tour." target="_blank"
               class="btn btn-warning btn-lg rounded-pill px-4 py-3 fw-bold text-dark shadow">
-              <i class="bi bi-whatsapp me-2"></i> Chat with Expert
+              <i class="bi bi-whatsapp me-2"></i> WhatsApp
             </a>
           </div>
         </div>
@@ -1234,7 +2114,530 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof flatpickr !== 'undefined') {
+        flatpickr('.datepick', {
+          dateFormat: 'd-m-Y',
+          minDate: 'today',
+          defaultDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+          theme: 'material_green'
+        });
+      }
+
+      initPaxPicker();
+      initSearchTabs();
+      initDestTabs();
+      initPackageFilters();
+
+      document.addEventListener('click', function (e) {
+        const paxPickerDropdown = document.getElementById('pax-dropdown-container');
+        const paxTrigger = document.getElementById('travellers_pax');
+        if (paxPickerDropdown && paxTrigger) {
+          if (!paxPickerDropdown.contains(e.target) && !paxTrigger.contains(e.target)) {
+            paxPickerDropdown.classList.remove('show');
+          }
+        }
+      });
+    });
+
+    let totalRooms = 1;
+    const roomsData = [{ room: 1, adults: 1, children: 0 }];
+
+    function initPaxPicker() {
+      const paxTrigger = document.getElementById('travellers_pax');
+      const paxDropdown = document.getElementById('pax-dropdown-container');
+
+      if (paxTrigger && paxDropdown) {
+        paxTrigger.addEventListener('click', function (e) {
+          e.stopPropagation();
+          paxDropdown.classList.toggle('show');
+        });
+      }
+      updatePaxSummary();
+    }
+
+    function updatePaxSummary() {
+      let totalAdults = 0;
+      let totalChildren = 0;
+
+      roomsData.forEach(r => {
+        totalAdults += r.adults;
+        totalChildren += r.children;
+      });
+
+      const summaryInput = document.getElementById('travellers_pax');
+      if (summaryInput) {
+        let text = `${totalAdults} Adult${totalAdults > 1 ? 's' : ''}`;
+        if (totalChildren > 0) {
+          text += ` + ${totalChildren} Child${totalChildren > 1 ? 'ren' : ''}`;
+        }
+        text += ` + ${totalRooms} Room${totalRooms > 1 ? 's' : ''}`;
+        summaryInput.value = text;
+      }
+    }
+
+    function renderRooms() {
+      const roomsContainer = document.getElementById('rooms-list-container');
+      if (!roomsContainer) return;
+
+      let html = '';
+      roomsData.forEach((roomObj, idx) => {
+        const roomNum = idx + 1;
+        html += `
+          <div class="room-block" id="room-block-${roomNum}">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="fw-bold text-success font13 text-uppercase">Room ${roomNum}</span>
+              ${roomNum > 1 ? `<button type="button" class="btn btn-sm btn-link text-danger p-0" onclick="removeSpecificRoom(${roomNum})"><i class="bi bi-x-circle"></i> Remove</button>` : ''}
+            </div>
+            <div class="row g-2">
+              <div class="col-6">
+                <div class="d-flex justify-content-between align-items-center bg-white p-2 rounded border">
+                  <div>
+                    <div class="fw-bold font13">Adults</div>
+                    <small class="text-muted font11">> 5 Yrs</small>
+                  </div>
+                  <div class="d-flex align-items-center gap-1">
+                    <button type="button" class="quantity-btn" onclick="changeCount(${roomNum}, 'adults', -1)">-</button>
+                    <span class="fw-bold px-2" id="adult-count-${roomNum}">${roomObj.adults}</span>
+                    <button type="button" class="quantity-btn" onclick="changeCount(${roomNum}, 'adults', 1)">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex justify-content-between align-items-center bg-white p-2 rounded border">
+                  <div>
+                    <div class="fw-bold font13">Children</div>
+                    <small class="text-muted font11">< 5 Yrs</small>
+                  </div>
+                  <div class="d-flex align-items-center gap-1">
+                    <button type="button" class="quantity-btn" onclick="changeCount(${roomNum}, 'children', -1)">-</button>
+                    <span class="fw-bold px-2" id="child-count-${roomNum}">${roomObj.children}</span>
+                    <button type="button" class="quantity-btn" onclick="changeCount(${roomNum}, 'children', 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      roomsContainer.innerHTML = html;
+      updatePaxSummary();
+    }
+
+    function changeCount(roomNum, type, delta) {
+      const roomObj = roomsData[roomNum - 1];
+      if (!roomObj) return;
+
+      if (type === 'adults') {
+        const newVal = roomObj.adults + delta;
+        if (newVal >= 1 && newVal <= 4) {
+          roomObj.adults = newVal;
+        }
+      } else if (type === 'children') {
+        const newVal = roomObj.children + delta;
+        if (newVal >= 0 && newVal <= 3) {
+          roomObj.children = newVal;
+        }
+      }
+
+      renderRooms();
+    }
+
+    function addRoom() {
+      if (roomsData.length < 5) {
+        roomsData.push({ room: roomsData.length + 1, adults: 1, children: 0 });
+        totalRooms = roomsData.length;
+        renderRooms();
+      } else {
+        alert('Maximum 5 rooms can be booked in a single request.');
+      }
+    }
+
+    function removeSpecificRoom(roomNum) {
+      if (roomsData.length > 1) {
+        roomsData.splice(roomNum - 1, 1);
+        totalRooms = roomsData.length;
+        renderRooms();
+      }
+    }
+
+    function applyPax() {
+      const paxDropdown = document.getElementById('pax-dropdown-container');
+      if (paxDropdown) {
+        paxDropdown.classList.remove('show');
+      }
+      updatePaxSummary();
+    }
+
+    function initSearchTabs() {
+      const tabBtns = document.querySelectorAll('.search-tab-btn');
+      const tabPanes = document.querySelectorAll('.search-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const targetTab = this.getAttribute('data-target');
+
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.add('d-none'));
+
+          this.classList.add('active');
+          const activePane = document.getElementById(targetTab);
+          if (activePane) {
+            activePane.classList.remove('d-none');
+          }
+        });
+      });
+    }
+
+    const destinationDetails = {
+      lachung: {
+        title: 'Lachung - Serene Alpine Valley & Gateway to Yumthang',
+        badge: '#ExploreWithSikkimClub',
+        elevation: '8,610 ft (2,700 m)',
+        description: 'Lachung is a picturesque mountain village in North Sikkim surrounded by snow-dusted peaks, pine forests, and roaring mountain streams. Famous as the base for Yumthang Valley (Valley of Flowers) and Zero Point (Yumesamdong).',
+        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1200&auto=format&fit=crop',
+        points: [
+          'Yumthang Valley of Flowers & Natural Hot Springs',
+          'Zero Point (Yumesamdong) at 15,300 ft snow line',
+          'Scenic wooden cottages and apple orchards',
+          'Lachung Monastery with tranquil Buddhist culture'
+        ],
+        recommendedPackage: '3 Days 2 Nights Lachung & Yumthang Valley Tour',
+        price: '₹3,809 / Person'
+      },
+      lachen: {
+        title: 'Lachen - Gateway to the Sacred Gurudongmar Lake',
+        badge: '#HighAltitudeAdventure',
+        elevation: '9,000 ft (2,750 m)',
+        description: 'Lachen is a tranquil mountain hamlet nestled amidst towering Himalayas. It is the starting point for the awe-inspiring expedition to Gurudongmar Lake and pristine Chopta Valley.',
+        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop',
+        points: [
+          'Expedition to Gurudongmar Lake at 17,800 ft',
+          'Breathtaking Chopta Valley & Thangu alpine meadows',
+          'Traditional Lachenpas stone and pine wood houses',
+          'Stunning views of Mt. Sinolchu'
+        ],
+        recommendedPackage: '4 Days 3 Nights North Sikkim (Lachen + Lachung + Gurudongmar)',
+        price: '₹5,238 / Person'
+      },
+      zuluk: {
+        title: 'Zuluk - The Historic Silk Route with 32 Hairpin Bends',
+        badge: '#OldSilkRoute',
+        elevation: '9,400 ft (2,865 m)',
+        description: 'Zuluk on the ancient Indo-Tibetan Silk Route is famed for its 32 thrilling hairpin turns (Zig-Zag Road), Thambi Viewpoint offering panoramic Kanchenjunga sunrise, and surreal high-altitude Kupup Lake.',
+        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop',
+        points: [
+          'Drive through the iconic 32 Hairpin Curves',
+          'Sunrise over Mt. Kanchenjunga from Thambi Viewpoint',
+          'Kupup Elephant Lake & Old Baba Mandir',
+          'Tukla Valley Indo-China war memorial'
+        ],
+        recommendedPackage: '3 Days 2 Nights Zuluk & Silk Route Circuit',
+        price: '₹4,499 / Person'
+      },
+      nathula: {
+        title: 'Nathu La Pass - Historic Indo-China Himalayan Frontier',
+        badge: '#NationalPride',
+        elevation: '14,140 ft (4,310 m)',
+        description: 'Nathu La connects Sikkim with Tibet Autonomous Region. Along the route lies sacred glacier-fed Tsomgo (Changu) Lake and legendary Baba Harbhajan Singh Mandir.',
+        image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200&auto=format&fit=crop',
+        points: [
+          'Walk alongside the Indo-China Border fence',
+          'Yak rides along frozen Tsomgo / Changu Lake',
+          'Offer prayers at Baba Harbhajan Mandir',
+          'Ropeway / Cable car ride over Tsomgo Lake'
+        ],
+        recommendedPackage: '1 Day Sharing Nathula Pass, Changu Lake & Baba Mandir',
+        price: '₹1,142 / Person'
+      },
+      katao: {
+        title: 'Mount Katao - The Swiss Alps of North Sikkim',
+        badge: '#SnowLoversParadise',
+        elevation: '15,000 ft (4,570 m)',
+        description: 'Often called the Switzerland of Sikkim, Mt. Katao offers perennial snowscapes, majestic pine-carpeted cliffs, and thrilling snow sports like sledging and snowboarding.',
+        image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop',
+        points: [
+          'Perennial snow play, skiing, and snowmobiles',
+          'Spotting rare flora like Rhododendrons and Primulas',
+          'Unobstructed views of snow-covered peaks',
+          'Military check-post border experience'
+        ],
+        recommendedPackage: 'Lachung with Katao Valley Add-On',
+        price: '₹4,200 / Person'
+      },
+      gurudongmar: {
+        title: 'Gurudongmar Lake - Sacred High Altitude Wonder at 17,800 ft',
+        badge: '#HighestLakesOfWorld',
+        elevation: '17,800 ft (5,430 m)',
+        description: 'One of the highest freshwater lakes in the world, Gurudongmar is revered by Buddhists, Sikhs, and Hindus. Even in extreme -20°C winter, a section of the lake never freezes.',
+        image: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200&auto=format&fit=crop',
+        points: [
+          'Pristine turquoise lake reflecting snow-capped peaks',
+          'Blessed water with miraculous healing beliefs',
+          'Surreal high-altitude cold desert plateau landscape',
+          'Rare sightings of Tibetan Wild Ass (Kiang) & Blue Sheep'
+        ],
+        recommendedPackage: '4 Days 3 Nights Lachen, Gurudongmar & Lachung Tour',
+        price: '₹5,238 / Person'
+      }
+    };
+
+    function initDestTabs() {
+      const destBtns = document.querySelectorAll('.dest-tab-btn');
+      destBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          destBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          const destKey = this.getAttribute('data-dest');
+          const data = destinationDetails[destKey];
+          if (data) {
+            document.getElementById('dest-title').innerText = data.title;
+            document.getElementById('dest-badge').innerText = data.badge;
+            document.getElementById('dest-elevation').innerText = data.elevation;
+            document.getElementById('dest-description').innerText = data.description;
+            document.getElementById('dest-image').src = data.image;
+            document.getElementById('dest-image').alt = data.title;
+            document.getElementById('dest-package-name').innerText = data.recommendedPackage;
+            document.getElementById('dest-price').innerText = data.price;
+
+            const pointsList = document.getElementById('dest-points-list');
+            if (pointsList) {
+              pointsList.innerHTML = data.points.map(pt => `
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>${pt}</span>
+                </li>
+              `).join('');
+            }
+          }
+        });
+      });
+    }
+
+    function initPackageFilters() {
+      const filterBtns = document.querySelectorAll('.pkg-filter-btn');
+      const packageCards = document.querySelectorAll('.package-grid-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(b => b.classList.remove('active', 'btn-success', 'text-white'));
+          filterBtns.forEach(b => b.classList.add('btn-outline-secondary'));
+
+          this.classList.add('active', 'btn-success', 'text-white');
+          this.classList.remove('btn-outline-secondary');
+
+          const filter = this.getAttribute('data-filter');
+          packageCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    const SIKKIM_PHONE = '+919000012345';
+    const SIKKIM_LOCATION = 'MG Marg, Gangtok, Sikkim – 737101';
+
+    const packageItineraries = {
+      '3d2n-lachung': {
+        title: '3 Days 2 Nights Lachung & Yumthang Valley Shared Tour',
+        price: '₹3,809 / Person (Govt Permit & Hotel Stay Included)',
+        duration: '3 Days / 2 Nights',
+        pickup: 'Gangtok Hotel / Vajra Stand (10:00 AM)',
+        drop: 'Gangtok (06:00 PM)',
+        itinerary: [
+          {
+            day: 'Day 1: Gangtok to Lachung (125 km / 6-7 hrs)',
+            desc: 'Pick up from Gangtok at 10:00 AM. Drive through North Sikkim highway. Visit Singhik Viewpoint, Seven Sisters Waterfall, and Naga Waterfalls on the way. Lunch at Mangan. Arrive at scenic Lachung village in the evening. Dinner and overnight stay in Lachung hotel.'
+          },
+          {
+            day: 'Day 2: Lachung - Yumthang Valley & Zero Point - Lachung',
+            desc: 'Early morning drive to Yumthang Valley (11,800 ft), known as the Valley of Flowers. Visit natural sulfur hot springs. Optional excursion to Zero Point (Yumesamdong 15,300 ft - subject to road/weather). Return to Lachung for hot lunch. Leisure evening in village.'
+          },
+          {
+            day: 'Day 3: Lachung to Gangtok via Chungthang',
+            desc: 'After breakfast, visit Lachung Monastery. Depart for Gangtok. En route witness breathtaking mountain cascades and Bheema Waterfalls. Reach Gangtok by 5:00 - 6:00 PM.'
+          }
+        ],
+        inclusions: ['Sharing Bolero/Maxx/Xylo Cab', '2 Nights Hotel Stay in Lachung', 'Meals (Breakfast, Lunch, Dinner)', 'Sikkim Protected Area Permit (PAP)', 'Experienced Mountain Driver'],
+        exclusions: ['Zero Point / Katao extra vehicle charge', 'Personal expenses & tips', 'GST 5%']
+      },
+      '4d3n-north-sikkim': {
+        title: '4 Days 3 Nights Complete North Sikkim (Lachen, Gurudongmar & Lachung)',
+        price: '₹5,238 / Person',
+        duration: '4 Days / 3 Nights',
+        pickup: 'Gangtok (10:00 AM)',
+        drop: 'Gangtok (06:00 PM)',
+        itinerary: [
+          {
+            day: 'Day 1: Gangtok to Lachen (125 km / 6-7 hrs)',
+            desc: 'Scenic drive to Lachen. Visit Seven Sister Waterfalls & Singhik viewpoint. Check-in at Lachen hotel. Acclimatization walk.'
+          },
+          {
+            day: 'Day 2: Lachen - Gurudongmar Lake (17,800 ft) - Lachung',
+            desc: 'Early morning 4:00 AM start to sacred Gurudongmar Lake via Chopta Valley & Thangu. Witness crystal blue lake. Afternoon transfer to Lachung.'
+          },
+          {
+            day: 'Day 3: Lachung - Yumthang Valley & Zero Point',
+            desc: 'Excursion to Yumthang Valley of Flowers, Hot Springs, and Zero Point. Overnight stay in Lachung.'
+          },
+          {
+            day: 'Day 4: Lachung to Gangtok',
+            desc: 'Morning monastery visit. Drive back to Gangtok with memories of a lifetime.'
+          }
+        ],
+        inclusions: ['Shared Vehicle', '1 Night Lachen + 2 Nights Lachung Hotel', 'All Meals in North Sikkim', 'Inner Line Permits'],
+        exclusions: ['Zero Point extra cost', 'Personal laundry & heaters']
+      },
+      '1d-nathula': {
+        title: '1 Day Sharing Nathula Pass, Tsomgo Lake & Baba Mandir',
+        price: '₹1,142 / Person',
+        duration: '1 Day (07:30 AM - 05:00 PM)',
+        pickup: 'Vajra Stand / MG Marg Gangtok',
+        drop: 'Gangtok Market',
+        itinerary: [
+          {
+            day: 'Full Day Tour (07:30 AM to 05:00 PM)',
+            desc: 'Depart Gangtok at 7:30 AM. Ascend to glacial Tsomgo (Changu) Lake at 12,400 ft. Experience Yak rides and ropeway. Proceed to Baba Harbhajan Singh Mandir (13,200 ft) and international border at Nathu La Pass (14,140 ft). Return to Gangtok by evening.'
+          }
+        ],
+        inclusions: ['Shared SUV Seat', 'Nathula Pass Permit Processing', 'Tsomgo Lake & Baba Mandir Entry'],
+        exclusions: ['Yak ride / Ropeway tickets', 'Warm jackets/boots rental', 'Meals']
+      },
+      '5d4n-combo': {
+        title: '5 Days 4 Nights Grand Sikkim Combo (Nathula + Lachen + Lachung)',
+        price: '₹7,141 / Person',
+        duration: '5 Days / 4 Nights',
+        pickup: 'Gangtok Hotel',
+        drop: 'Gangtok',
+        itinerary: [
+          { day: 'Day 1: Nathula Pass & Tsomgo Lake Day Excursion', desc: 'Full day East Sikkim tour to Nathula Pass, Tsomgo Lake & Baba Mandir. Night stay in Gangtok.' },
+          { day: 'Day 2: Gangtok to Lachen', desc: 'North Sikkim journey begins. Drive to Lachen via waterfalls and Chungthang.' },
+          { day: 'Day 3: Gurudongmar Lake & Transfer to Lachung', desc: 'Visit majestic Gurudongmar Lake (17,800 ft) and transfer to Lachung village.' },
+          { day: 'Day 4: Yumthang Valley & Zero Point', desc: 'Full day valley exploration and hot springs in Lachung.' },
+          { day: 'Day 5: Lachung to Gangtok', desc: 'Return drive to Gangtok with photo stops along Teesta river.' }
+        ],
+        inclusions: ['Full Vehicle Transportation', '3 Nights North Sikkim Stay with All Meals', '1 Night Gangtok Stay', 'All Sikkim Govt Permits'],
+        exclusions: ['Optional Zero Point cab upgrade', 'Personal expenses']
+      },
+      '3d2n-zuluk': {
+        title: '3 Days 2 Nights Zuluk & Old Silk Route Expedition',
+        price: '₹4,499 / Person',
+        duration: '3 Days / 2 Nights',
+        pickup: 'Gangtok / NJP',
+        drop: 'Gangtok',
+        itinerary: [
+          { day: 'Day 1: Gangtok to Zuluk via Rongli & Lingtam', desc: 'Permit clearance at Rongli. Drive through winding cardamom hills to Zuluk village homestay.' },
+          { day: 'Day 2: 32 Hairpin Curves, Thambi Viewpoint & Gnathang Valley', desc: 'Early sunrise over Kanchenjunga from Thambi. Drive past Kupup Lake & Old Baba Mandir.' },
+          { day: 'Day 3: Return to Gangtok via Aritar Lake', desc: 'Visit lampokhari emerald lake in Aritar and drive back to Gangtok.' }
+        ],
+        inclusions: ['Homestay accommodation', 'Local organic Sikkim meals', 'Silk Route Permits', 'Vehicle transfers'],
+        exclusions: ['Room heaters', 'Entry tickets']
+      },
+      '1d-gangtok-local': {
+        title: '1 Day Gangtok Best 7-Points Local Sightseeing Tour',
+        price: '₹999 / Person',
+        duration: '1 Day (09:00 AM - 04:30 PM)',
+        pickup: 'MG Marg / Hotel',
+        drop: 'MG Marg Gangtok',
+        itinerary: [
+          { day: 'Full Day Sightseeing (09:00 AM - 04:30 PM)', desc: 'Explore Tashi View Point, Ganesh Tok, Hanuman Tok, Bakthang Waterfalls, Enchey Monastery, Flower Exhibition Center, and Do Drul Chorten.' }
+        ],
+        inclusions: ['Dedicated Local Sightseeing Cab', 'Parking & Toll fees'],
+        exclusions: ['Monastery entry tickets', 'Lunch']
+      }
+    };
+
+    function openItineraryModal(pkgKey) {
+      const data = packageItineraries[pkgKey];
+      if (!data) return;
+
+      document.getElementById('itinerary-modal-title').innerText = data.title;
+      document.getElementById('itinerary-modal-price').innerText = data.price;
+      document.getElementById('itinerary-modal-duration').innerText = data.duration;
+      document.getElementById('itinerary-modal-pickup').innerText = data.pickup;
+
+      const itinList = document.getElementById('itinerary-days-container');
+      itinList.innerHTML = data.itinerary.map(item => `
+        <div class="border-start border-3 border-success ps-3 mb-3">
+          <h6 class="fw-bold text-dark mb-1">${item.day}</h6>
+          <p class="text-muted font14 mb-0">${item.desc}</p>
+        </div>
+      `).join('');
+
+      const incList = document.getElementById('itinerary-inclusions-list');
+      incList.innerHTML = data.inclusions.map(inc => `<li><i class="bi bi-check2-circle text-success me-2"></i>${inc}</li>`).join('');
+
+      const excList = document.getElementById('itinerary-exclusions-list');
+      excList.innerHTML = data.exclusions.map(exc => `<li><i class="bi bi-x-circle text-danger me-2"></i>${exc}</li>`).join('');
+
+      const btnBookWa = document.getElementById('itinerary-modal-wa-btn');
+      if (btnBookWa) {
+        btnBookWa.onclick = function () {
+          bookPackageViaWhatsApp(data.title, data.price);
+        };
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById('itineraryModal'));
+      modal.show();
+    }
+
+    function bookPackageViaWhatsApp(packageName, price) {
+      const travelDate = document.getElementById('arrival_date') ? document.getElementById('arrival_date').value : 'Upcoming Date';
+      const paxText = document.getElementById('travellers_pax') ? document.getElementById('travellers_pax').value : '2 Adults + 1 Room';
+
+      const message = `Hello Sikkim Club! 👋
+I would like to book the following tour package:
+
+🏔️ *Package*: ${packageName}
+💰 *Price*: ${price}
+📅 *Journey Date*: ${travelDate}
+👥 *Guests/Rooms*: ${paxText}
+📍 *Office*: ${SIKKIM_LOCATION}
+
+Please share booking availability, vehicle details, and permit requirements.`;
+
+      const encodedUrl = `https://wa.me/${SIKKIM_PHONE.replace('+', '')}?text=${encodeURIComponent(message)}`;
+      window.open(encodedUrl, '_blank');
+    }
+
+    function handleSearchSubmit(formType) {
+      let message = '';
+      if (formType === 'tours') {
+        const pkgSelect = document.getElementById('package_select');
+        const pkgName = pkgSelect ? pkgSelect.options[pkgSelect.selectedIndex].text : 'North Sikkim Tour';
+        const date = document.getElementById('arrival_date') ? document.getElementById('arrival_date').value : 'Immediate';
+        const guests = document.getElementById('travellers_pax') ? document.getElementById('travellers_pax').value : '1 Adult';
+
+        message = `Hello Sikkim Club! 👋%0A%0AI want to check availability and book:%0A🏔️ *Tour*: ${encodeURIComponent(pkgName)}%0A📅 *Date*: ${encodeURIComponent(date)}%0A👥 *Guests*: ${encodeURIComponent(guests)}%0A📍 *Location*: Gangtok, Sikkim%0A%0APlease assist with itinerary and payment link.`;
+      } else if (formType === 'permit') {
+        const permitType = document.getElementById('permit_type_select') ? document.getElementById('permit_type_select').value : 'Nathula Pass PAP';
+        const vehicles = document.getElementById('permit_vehicle_count') ? document.getElementById('permit_vehicle_count').value : '1';
+        const date = document.getElementById('permit_date_input') ? document.getElementById('permit_date_input').value : 'Upcoming';
+
+        message = `Hello Sikkim Club! 👋%0A%0AI need assistance with *Sikkim Protected Area Permit (PAP)*:%0A📄 *Permit Type*: ${encodeURIComponent(permitType)}%0A🚗 *No. of Persons/Vehicles*: ${encodeURIComponent(vehicles)}%0A📅 *Date of Travel*: ${encodeURIComponent(date)}%0A%0APlease let me know the document submission requirements.`;
+      } else if (formType === 'cabs') {
+        const route = document.getElementById('cab_route_select') ? document.getElementById('cab_route_select').value : 'Gangtok to Lachung';
+        const cabType = document.getElementById('cab_vehicle_select') ? document.getElementById('cab_vehicle_select').value : 'Innova / Xylo';
+        const date = document.getElementById('cab_date_input') ? document.getElementById('cab_date_input').value : 'Upcoming';
+
+        message = `Hello Sikkim Club! 👋%0A%0AI want to book a *Cab / Shared Vehicle*:%0A🗺️ *Route*: ${encodeURIComponent(route)}%0A🚙 *Vehicle*: ${encodeURIComponent(cabType)}%0A📅 *Date*: ${encodeURIComponent(date)}%0A%0APlease share the quote and driver details.`;
+      }
+
+      if (message) {
+        const waUrl = `https://wa.me/${SIKKIM_PHONE.replace('+', '')}?text=${message}`;
+        window.open(waUrl, '_blank');
+      }
+      return false;
+    }
+  </script>
 </body>
 
 </html>

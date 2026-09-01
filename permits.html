@@ -19,12 +19,70 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
+
+  <style>
+    :root {
+      --primary-color: #2b7a2d;
+      --primary-dark: #1b521d;
+      --primary-light: #3da840;
+      --primary-ultra-light: #eaf6ea;
+      --secondary-color: #f59e0b;
+      --secondary-dark: #d97706;
+      --accent-color: #0284c7;
+      --dark-bg: #0f172a;
+      --dark-surface: #1e293b;
+      --text-main: #1f2937;
+      --text-muted: #64748b;
+      --bg-light: #f8fafc;
+      --border-color: #e2e8f0;
+      --white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 35px -5px rgba(0,0,0,0.15), 0 10px 15px -5px rgba(0,0,0,0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; font-weight: 700; color: #0f172a; }
+
+    .top-marquee-bar { background: linear-gradient(90deg, #1b521d 0%, #2b7a2d 50%, #1e3a8a 100%); color: #fff; font-size: 0.875rem; padding: 9px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: inline-block; animation: marqueeScroll 30s linear infinite; }
+    @keyframes marqueeScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+    .main-header { position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+    .nav-link { font-weight: 600; font-size: 0.95rem; color: #334155 !important; padding: 0.5rem 0.9rem !important; border-radius: 8px; transition: var(--transition); }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color) !important; background-color: var(--primary-ultra-light); }
+
+    .permit-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: var(--radius-xl); color: #ffffff; padding: 40px; }
+    .permit-step-badge { width: 36px; height: 36px; border-radius: 50%; background: var(--secondary-color); color: #0f172a; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    .main-footer { background: #0b1322; color: #94a3b8; padding: 70px 0 24px 0; font-size: 0.925rem; }
+    .footer-heading { color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 36px; height: 3px; background: var(--primary-color); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #94a3b8; text-decoration: none; transition: var(--transition); }
+    .footer-links a:hover { color: #ffffff; transform: translateX(4px); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; color: #cbd5e1; }
+    .footer-contact-item i { color: var(--secondary-color); font-size: 1.2rem; margin-top: 3px; }
+
+    .floating-actions { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+    .floating-btn { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: var(--transition); }
+    .floating-whatsapp { background: #25d366; }
+    .floating-call { background: var(--primary-color); }
+    .floating-btn:hover { transform: scale(1.12); color: #fff; }
+  </style>
 </head>
 
 <body>
 
-  <!-- Top Marquee -->
   <div class="top-marquee-bar">
     <div class="marquee-content">
       <span>🏔️ <strong>Book Now!</strong> 2 Night Lachung & Yumthang Valley Shared Tour @ ₹3,809/- Per Person</span>
@@ -37,7 +95,6 @@
     </div>
   </div>
 
-  <!-- Header -->
   <header class="main-header">
     <nav class="navbar navbar-expand-lg navbar-light py-2">
       <div class="container-fluid px-lg-5">
@@ -91,7 +148,6 @@
     </nav>
   </header>
 
-  <!-- Page Banner -->
   <section class="py-5 text-center text-white" style="background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;">
     <div class="container py-4">
       <span class="badge bg-warning text-dark font13 px-3 py-2 rounded-pill mb-2">OFFICIAL PERMIT GUIDELINES</span>
@@ -102,7 +158,6 @@
     </div>
   </section>
 
-  <!-- Permit Categories & Overview -->
   <section class="container my-5">
     <div class="row g-4 align-items-center mb-5">
       <div class="col-lg-6">
@@ -140,7 +195,6 @@
         </div>
       </div>
 
-      <!-- Online Permit Application Card -->
       <div class="col-lg-6">
         <div class="bg-white border rounded-4 p-4 p-md-5 shadow-lg">
           <div class="d-flex align-items-center gap-2 mb-3">
@@ -149,7 +203,7 @@
           <h4 class="fw-bold text-dark mb-1">Apply for Sikkim Permit Online</h4>
           <p class="text-muted font13 mb-4">Submit your travel details and upload documents via WhatsApp for express permit clearance.</p>
 
-          <form onsubmit="return handleSearchSubmit('permit');">
+          <form onsubmit="return handlePermitSubmit(event);">
             <div class="mb-3">
               <label class="form-label font13 fw-bold text-dark">Select Destination / Permit Type</label>
               <select class="form-select font14" id="permit_type_select" required>
@@ -194,56 +248,6 @@
     </div>
   </section>
 
-  <!-- Document Checklist & Important FAQs -->
-  <section class="bg-light py-5">
-    <div class="container">
-      <div class="text-center mb-5">
-        <span class="text-success fw-bold text-uppercase font13 letter-spacing-1 d-block mb-1">Avoid Travel Delays</span>
-        <h2 class="display-6 fw-bold">Important Sikkim Permit Rules & FAQ</h2>
-        <p class="text-muted max-w-700 mx-auto">Read these essential tips before packing your bags for Sikkim.</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-12 col-md-6">
-          <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
-            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-question-circle-fill text-success me-2"></i> Can foreign nationals visit Nathula Pass?</h5>
-            <p class="text-muted font14 mb-0">
-              No. Due to strict military border regulations, foreign passport holders (including OCI/PIO cardholders) are not allowed at Nathu La Pass and Gurudongmar Lake. However, foreigners can visit Tsomgo (Changu) Lake, Lachung, Yumthang Valley, and Pelling with valid permits in a group of 2 or more.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-          <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
-            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-question-circle-fill text-success me-2"></i> How many days in advance should I apply?</h5>
-            <p class="text-muted font14 mb-0">
-              For <strong>North Sikkim</strong> (Lachung/Lachen), send documents at least 24 hours prior to travel. For <strong>Nathula Pass</strong>, permits are issued on a first-come, first-served quota basis by Sikkim Tourism 1 day in advance. We recommend booking with Sikkim Club 3 to 7 days before your trip.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-          <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
-            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-question-circle-fill text-success me-2"></i> Are permits required for children under 5 years?</h5>
-            <p class="text-muted font14 mb-0">
-              Yes, children of all ages require permit endorsement. For minors who do not have a Voter ID or Passport, a valid Birth Certificate with photo ID or School ID along with parents' documents is required.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-          <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
-            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-question-circle-fill text-success me-2"></i> What if Nathula Pass is closed due to snowfall?</h5>
-            <p class="text-muted font14 mb-0">
-              If the road beyond 15th Mile is blocked due to heavy snowfall or landslides, cabs visit Tsomgo (Changu) Lake and Baba Mandir instead. Sikkim Club provides transparent adjustments and support during bad weather situations.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="main-footer">
     <div class="container">
       <div class="row g-4 pb-5 border-bottom border-secondary border-opacity-25">
@@ -297,7 +301,6 @@
     </div>
   </footer>
 
-  <!-- Floating Actions -->
   <div class="floating-actions">
     <a href="https://wa.me/919000012345?text=Hi%20Sikkim%20Club!%20I%20need%20permit%20assistance." target="_blank" class="floating-btn floating-whatsapp" title="WhatsApp Us">
       <i class="bi bi-whatsapp"></i>
@@ -309,7 +312,29 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof flatpickr !== 'undefined') {
+        flatpickr('.datepick', {
+          dateFormat: 'd-m-Y',
+          minDate: 'today',
+          defaultDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+          theme: 'material_green'
+        });
+      }
+    });
+
+    function handlePermitSubmit(e) {
+      if (e) e.preventDefault();
+      const permitType = document.getElementById('permit_type_select').value;
+      const vehicles = document.getElementById('permit_vehicle_count').value;
+      const date = document.getElementById('permit_date_input').value;
+
+      const message = `Hello Sikkim Club! 👋\n\nI need assistance with *Sikkim Protected Area Permit (PAP)*:\n📄 *Permit Type*: ${permitType}\n🚗 *Travellers*: ${vehicles}\n📅 *Travel Date*: ${date}\n\nPlease advise document submission process.`;
+      window.open(`https://wa.me/919000012345?text=${encodeURIComponent(message)}`, '_blank');
+      return false;
+    }
+  </script>
 </body>
 
 </html>
